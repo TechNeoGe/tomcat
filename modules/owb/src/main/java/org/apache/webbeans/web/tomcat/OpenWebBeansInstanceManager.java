@@ -70,7 +70,8 @@ public class OpenWebBeansInstanceManager implements InstanceManager {
                 try {
                     BeanManagerImpl beanManager = WebBeansContext.currentInstance().getBeanManagerImpl();
                     @SuppressWarnings("rawtypes")
-                    Producer producer = beanManager.getProducerForJavaEeComponent(injectorInstance.object.getClass());
+                    Producer producer = null;
+//                        beanManager.getProducerForJavaEeComponent(injectorInstance.object.getClass());
                     if (producer != null) {
                         producer.dispose(injectorInstance.object);
                     } else if (injectorInstance.context != null) {
@@ -127,9 +128,9 @@ public class OpenWebBeansInstanceManager implements InstanceManager {
             Thread.currentThread().setContextClassLoader(loader);
             CreationalContext<?> context = null;
             try {
-                BeanManager beanManager = WebBeansContext.currentInstance().getBeanManagerImpl();
-                context = beanManager.createCreationalContext(null);
-                OWBInjector.inject(beanManager, object, context);
+//                BeanManager beanManager = (BeanManager) WebBeansContext.currentInstance().getBeanManagerImpl();
+//                context = beanManager.createCreationalContext(null);
+//                OWBInjector.inject(beanManager, object, context);
             } finally {
                 Thread.currentThread().setContextClassLoader(oldLoader);
             }

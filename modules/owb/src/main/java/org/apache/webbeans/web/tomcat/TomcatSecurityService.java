@@ -90,15 +90,16 @@ public class TomcatSecurityService extends SimpleSecurityService {
 
     @SuppressWarnings("unchecked")
     private static Principal getUserPrincipal() {
-        final BeanManager beanManager = CDI.current().getBeanManager();
-        final HttpServletRequest request = HttpServletRequest.class.cast(
-                beanManager.getReference(
-                        beanManager.resolve(beanManager.getBeans(HttpServletRequest.class)), HttpServletRequest.class,
-                        beanManager.createCreationalContext(null)));
-        final Object supplier = request.getAttribute(Principal.class.getName() + ".supplier");
-        if (supplier != null) {
-            return ((Supplier<Principal>) supplier).get();
-        }
-        return request.getUserPrincipal();
+//        final BeanManager beanManager = CDI.current().getBeanManager();
+//        final HttpServletRequest request = HttpServletRequest.class.cast(
+//                beanManager.getReference(
+//                        beanManager.resolve(beanManager.getBeans(HttpServletRequest.class)), HttpServletRequest.class,
+//                        beanManager.createCreationalContext(null)));
+//        final Object supplier = request.getAttribute(Principal.class.getName() + ".supplier");
+//        if (supplier != null) {
+//            return ((Supplier<Principal>) supplier).get();
+//        }
+//        return request.getUserPrincipal();
+        return null;
     }
 }
